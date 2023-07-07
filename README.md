@@ -1,5 +1,6 @@
 
-APCS	August 27, 2020
+
+APCS	
 
 ## Numerical Image Decompression ##
 
@@ -10,11 +11,7 @@ In this project we're looking at a way that a black-and-white pixelated image ca
   <tr>
    <td rowspan="8" >
 
-
-
-
 <img src="images/image1.png" width="80%" alt="drawing">
-
    </td>
    <td>3 light, 1 dark, 4 light
    </td>
@@ -52,16 +49,29 @@ In this project we're looking at a way that a black-and-white pixelated image ca
 
 Since we keep alternating the light and dark values, we might even choose just use the numbers, assuming we always start with light:
 
-```
+
     3 1 4
+
+
     3 1 4
+
+
     2 1 1 1 3
+
+
     2 1 1 1 3
+
+
     1 1 3 1 2
+
+
     1 5 2
+
+
     0 1 5 1 1
+
+
     0 1 5 1 1
-```
 
 (Note the zeroes on the last two lines… and consider why they are there. Would it make sense to have zeros in the middle of a line?)
 
@@ -92,9 +102,10 @@ Done.
 ```
 
 
-… In this case, I am using a period for the "light" cells and an "M" for the dark ones. ("M" just has a lot of dark pixels. Other candidates might be "W," "#" or "@.") You can use whatever you like. And, yes, a space makes better sense for the light cells… when you're done debugging.[^1]
+… In this case, I am using a period for the "light" cells and an "M" for the dark ones. ("M" just has a lot of dark pixels. Other candidates might be "W," "#" or "@.") You can use whatever you like. And, yes, a space makes better sense for the light cells… when you're done debugging[^1].
 
 Here are some relevant Java tips:
+
 
 <table>
   <tr>
@@ -132,37 +143,48 @@ This is how you get out of a <code>while(true) </code>loop, which would otherwis
 
 
 
-*   Click on this link:  https://classroom.github.com/a/EDQrm9Nr to take you to a page inviting you to the github classroom assignment. You will likely need to log in with your github account.
-*   If this is your first time doing one of these assignments, you should see a list of names - please pick your own.
-*   There should be a button prompting you to "accept" this assignment.[^2]
+* Click on this link: [https://classroom.github.com/a/mF9jx9dC](https://classroom.github.com/a/mF9jx9dC) to take you to a page inviting you to the github classroom assignment. You will likely need to log in with your github account.
+* If this is your first time doing one of these assignments, you should see a list of names - please pick your own.
+* There should be a button prompting you to "accept" this assignment.[^2]
 
-*   After a brief pause, you'll get a message saying you're ready to go, with a url on it. Go ahead and click on this URL.
-*   You should see something similar to this. (This is for a different assignment for a different class for a different student, but the overall appearance should be similar.) <br /><img src="images/image2.png" width = 750>
-*   Click on the green "Code" button. You'll see the start of a (mighty similar) URL here, too. Click on the clipboard icon next to it to copy this URL into your clipboard.
-*   Launch IntelliJ IDEA on your computer, and then…
-    *   If you are seeing the IntelliJ greeting screen, click "Get From Version Control."
-    *   Otherwise, go to File menu → New → "Project from Version Control…"
-*   In the window that appears, paste the URL you just copied into the URL field.  Use the Directory field to modify where you want this project to go on your computer.
-*   The project should open up with my starter code.
 
-I would like to draw your attention to the top of the main() method - I've created some variables that I would like to recommend to you, because I think you will find them useful. 
+* After a brief pause, you'll get a message saying you're ready to go, with a url on it. Go ahead and click on this URL.
+* You should see something similar to this. (This is for a different assignment for a different class for a different student, but the overall appearance should be similar.) 
 
-In addition to what we have seen, let us make our program a bit more forgiving:[^3] 
+
+
+<img src="images/image2.png" width = 750>
+
+* Click on the green "Code" button. You'll see the start of a (mighty similar) URL here, too. Click on the clipboard icon next to it to copy this URL into your clipboard.
+* Launch IntelliJ IDEA on your computer, and then…
+    * If you are seeing the IntelliJ greeting screen, click "Get From Version Control."
+    * Otherwise, go to File menu → New → "Project from Version Control…"
+* In the window that appears, paste the URL you just copied into the URL field.  Use the Directory field to modify where you want this project to go on your computer.
+* The project should open up with my starter code.
+
+I would like to draw your attention to the top of the main() method - I've created some variables that I would like to recommend to you, because I think you will find them useful.
+
+In addition to what we have seen, let us make our program a bit more forgiving:
 
 
 
 1. If a user types in a number that would cause us to go past the end of a row, we'll just draw however many characters as are left in the row and ignore the rest. For example, if we have an image width of 6 and type 2 3 12 for that row, we'll get: \
-    `..MMM. `\
-    and the remaining 11 dots of the "12" will be discarded.
-2. If the user types in a negative number, that will fill in the rest of the row - think of "-1" as equivalent to "imageWidth."
+   `..MMM. \
+   `and the remaining 11 dots of the "12" will be discarded.
+2. If the user types in a negative number, that will fill in the rest of the row - think of "-1" as equivalent to "imageWidth" or an even bigger number.
 3. If the user types in more numbers that would create extra lines on the image, they are ignored. Only the correct number of rows will be drawn.
+
+   (See also: the fourth bullet in the list below.)
+
 
 A few things to check for yourself, in addition to (a - c), above:
 
-*   The program should work just as well if you end a row with an exact count as with an overflow, like in (a).
-*   Starting a row with 0 should work as expected.
-*   Ending a row with a light cell or a dark cell should not impact the appearance of the next row.
-*   If the user types in too few numbers to make the full shape, it will draw what it can and let the user type in more numbers (without a prompt) and continue from there. If the numbers run out in the middle of that row, you don't have to continue at the indentation where you left off; that row will just be messed up, but the next row should be able to print correctly. (Honestly, this is the normal behavior that I think will happen naturally - I am giving you permission not to stress out about it!)
+
+
+* The program should work just as well if you end a row with an exact count as with an overflow, like in (a).
+* Starting a row with 0 should work as expected.
+* Ending a row with a light cell or a dark cell should not impact the appearance of the next row.
+* If the user types in too few numbers to make the full shape, it will draw what it can and let the user type in more numbers (without a prompt) and continue from there. If the numbers run out in the middle of that row, you don't have to continue at the indentation where you left off; that row will just be messed up, but the next row should be able to print correctly. (Honestly, this is the normal behavior that I think will happen naturally - I am giving you permission not to stress out about it!)
 
 **Turning this project in**
 
@@ -170,17 +192,40 @@ We will discuss in class what you need to do to turn this in via Github Classroo
 
 *(Make these changes in the Google Document.)*
 
+<table>
+  <tr>
+   <td>Width & Height:
+   </td>
+  </tr>
+  <tr>
+   <td>Numbers
+   </td>
+  </tr>
+</table>
+
+
 **Optional Extension**
+
 Create another class in this project that does the opposite. (This would have a different "public static void main().") It takes a width and height, followed by several strings (e.g., "..M.M..") and turns them into the numbers for this drawing. Ideally, you could provide this program with an image, it would provide you with a stream of numbers, you could copy those numbers into the original program, and you'd get the same picture back again.
 
 For this, you'll need to use the "substring()" command for strings. For example, if we have a string called "row," then
-`String s = row.substring(4,5);`
-would give you a single-character string, corresponding to the location 4 in the "row" String. (The substring method takes two parameters, a start and one past the end of the string you will get back. The number of characters you get back will be the difference between the two parameters, so in this case you are getting 5 - 4 = 1 character, starting at location 4. Remember all strings start counting at zero.)
-So, 
 
-`String name = "Harlan";
 
-System.out.println(name.substring(2,3));`
+```
+String s = row.substring(4,5);
+```
+
+
+would give you a single-character string, corresponding to the location 4 in the "row" String. (The substring method takes two parameters, a start and one past the end of the substring you will get back. The number of characters you get back will be the difference between the two parameters, so in this case you are getting 5 - 4 = 1 character, starting at location 4. Remember all strings start counting at zero.)
+
+So,
+
+
+```
+String name = "Harlan";
+System.out.println(name.substring(2,3));
+```
+
 
 would print "r".
 
@@ -188,8 +233,9 @@ would print "r".
 <!-- Footnotes themselves at the bottom. -->
 ## Notes
 
-[^1]: Was I just hinting that something other than a space might make debugging easier? Why, yes, I was.
+[^1]:
+Was I just hinting that something other than a space might make debugging easier? Why, yes, yes I was.
 
-[^2]: Sounds like something out of _Mission Impossible,_ doesn't it?
+[^2]:
 
-[^3]: Of course, it's forgiving for the *user*, but you have to make sure this works.
+     Sounds like something out of _Mission Impossible,_ doesn't it?
